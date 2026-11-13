@@ -61,4 +61,4 @@ Run five observed usability sessions with adult learners, record findings withou
 
 ## Repository delivery
 
-The repository includes GitHub Actions checks for pushes and pull requests to `main`, plus a separate manually triggered GitHub Pages workflow. The human repository owner must create/connect the GitHub remote, push the branch, configure Pages to use GitHub Actions, and explicitly run the deployment workflow. CI and a local Git repository do not themselves create a GitHub account/repository, configure a production service, or publish the app.
+The repository includes GitHub Actions checks for pushes and pull requests to `dev` and `main`. Work should be reviewed into `dev`, then promoted by a release pull request from `dev` to `main`; Pages deploys from `main` after validation. The human repository owner must enable branch protection/rulesets requiring pull requests and the CI status check—workflow files alone cannot block direct pushes—and configure Pages to use GitHub Actions. CI and a local Git repository do not themselves configure GitHub protections or a production service.

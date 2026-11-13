@@ -19,6 +19,139 @@ const TOPIC_CATALOG = [
   { category: "Arts & design", topics: ["Photography basics", "Drawing fundamentals", "Color theory", "Graphic design principles", "Music theory", "Film language", "Architecture foundations", "Art history"] },
   { category: "Everyday skills", topics: ["Cooking fundamentals", "Gardening basics", "Critical thinking", "Decision-making", "Time management", "Communication skills", "First aid basics", "Learning how to learn"] },
 ];
+const CURATED_LESSONS = {
+  "Algebra: linear equations": {
+    levels: {
+      "curious beginner": [
+        { summary: "An equation says two expressions have the same value. Keep that equality true by doing the same operation to both sides.", practice: "Solve 2x + 3 = 11, then substitute your answer to check it." },
+        { summary: "Undo operations in reverse order: first undo addition or subtraction, then multiplication or division.", practice: "Solve 4x - 5 = 19. Write one balanced step at a time." },
+        { summary: "A word problem becomes easier when you name the unknown and translate the relationships into an equation.", practice: "Four notebooks and a $3 delivery fee cost $19. Find the price of one notebook." },
+        { summary: "After solving, substitute your result into the original equation. A true statement confirms the answer.", practice: "Solve 5x + 2 = 27 and explain why each step preserves equality." },
+      ],
+      "some experience": [
+        { summary: "Use inverse operations to isolate the variable; simplify both sides before solving when needed.", practice: "Solve 3(2x - 1) = 15 and verify the result in the original equation." },
+        { summary: "For equations with variables on both sides, collect variable terms on one side and constants on the other.", practice: "Solve 7x + 4 = 3x + 20. What operation keeps the equation equivalent?" },
+        { summary: "Translate rates and fixed fees separately: total cost can be modeled as rate × quantity plus a fixed amount.", practice: "A ride costs $2 plus $3 per mile. Model and solve a $20 fare." },
+        { summary: "Equivalent transformations preserve the solution set, but dividing by an expression requires checking that it is nonzero.", practice: "Solve 2(x + 4) = 3x - 1, then check by substitution." },
+      ],
+      "advanced learner": [
+        { summary: "A linear equation in one variable reduces to ax = c. If a ≠ 0, it has one solution; if a = 0, it may have none or infinitely many.", practice: "Classify 2x + 4 = 2(x + 2) and 2x + 4 = 2x + 5." },
+        { summary: "For a parameterized equation, partition parameter values by whether the coefficient of the unknown vanishes.", practice: "For (k - 1)x = k + 2, identify when the solution is unique and when it is not." },
+        { summary: "Model assumptions determine whether a linear equation is appropriate; check units and domain restrictions as well as algebra.", practice: "Write a linear model for a fixed fee plus a per-unit cost, and state what the variables represent." },
+        { summary: "A reliable solution argument names each reversible transformation and separately handles any non-invertible step.", practice: "Explain why multiplying both sides by zero can introduce solutions that were not in the original equation." },
+      ],
+    },
+    resources: [
+      { type: "Open textbook", title: "Elementary Algebra 2e, §2.1: Properties of Equality", attribution: "Jay Abramson · OpenStax", url: "https://openstax.org/books/elementary-algebra-2e/pages/2-1-solve-equations-using-the-subtraction-and-addition-properties-of-equality" },
+    ],
+  },
+  "The science of sleep": {
+    levels: {
+      "curious beginner": [
+        { summary: "Sleep includes recurring NREM and REM stages. Sleep patterns and recommended duration vary with age.", practice: "Use the NHLBI guide to compare sleep stages and age-based recommendations." },
+        { summary: "Sleep supports health and daytime functioning, but one night or one stage does not explain every outcome.", practice: "Choose one sleep claim and trace it to the cited evidence." },
+        { summary: "Researchers study sleep and emotion using different methods; a review summarizes evidence rather than proving one universal mechanism.", practice: "Compare a claim in Walker and van der Helm's review with current NHLBI guidance." },
+        { summary: "Sleep science changes as evidence accumulates. Separate established guidance from proposed explanations.", practice: "Write one conclusion and one unanswered question from your reading." },
+      ],
+      "some experience": [
+        { summary: "Sleep architecture describes how NREM and REM stages change across a night; measures depend on physiological recordings.", practice: "Sketch a hypnogram and note what EEG, eye movement, and muscle tone can indicate." },
+        { summary: "Walker and van der Helm review evidence on sleep and emotional brain processing; treat its synthesis as a research argument to evaluate.", practice: "Identify the review's question, evidence types, and one limitation." },
+        { summary: "Distinguish correlation, experimental manipulation, and proposed mechanism when evaluating sleep-and-emotion findings.", practice: "For one cited study, identify its design before interpreting its conclusion." },
+        { summary: "A review's conclusions depend on included studies and methods; compare them with newer research and health guidance.", practice: "Summarize what the evidence supports without extending it to a clinical diagnosis." },
+      ],
+      "advanced learner": [
+        { summary: "Sleep-stage labels operationalize patterns in polysomnography; stage proportions alone do not establish cognitive or emotional function.", practice: "Compare how stage scoring and outcome measurement affect a study's inference." },
+        { summary: "Critically appraise the 2009 Walker–van der Helm review as a historically important synthesis, not a final consensus statement.", practice: "Trace one mechanistic claim to the primary studies cited and inspect their design." },
+        { summary: "Separate causal evidence from model-based interpretation, and examine sample size, confounds, and replication.", practice: "Draft a competing explanation for one reported association." },
+        { summary: "Translate evidence cautiously: laboratory findings do not by themselves yield individual treatment advice.", practice: "State the population, outcome, and uncertainty before making a practical claim." },
+      ],
+    },
+    resources: [
+      { type: "Research review", title: "Overnight therapy? The role of sleep in emotional brain processing", attribution: "Matthew P. Walker & Els van der Helm · Psychological Bulletin (2009)", url: "https://doi.org/10.1037/a0016570" },
+      { type: "Book", title: "Why We Sleep", attribution: "Matthew Walker · popular-science synthesis; check claims against current research", url: "https://www.simonandschuster.com/books/Why-We-Sleep/Matthew-Walker/9781501144325" },
+      { type: "Health reference", title: "Why Is Sleep Important?", attribution: "National Heart, Lung, and Blood Institute", url: "https://www.nhlbi.nih.gov/health/sleep/why-sleep-important" },
+    ],
+  },
+  "Photography basics": {
+    levels: {
+      "curious beginner": [
+        { summary: "Exposure is influenced by aperture, shutter time, and ISO. Each changes the image in a different way.", practice: "Photograph one scene twice, changing only shutter speed." },
+        { summary: "Aperture affects how much light enters and how much of the scene appears in focus.", practice: "Compare two aperture settings while keeping the framing steady." },
+        { summary: "Shutter speed changes exposure time and can freeze or blur motion.", practice: "Photograph a moving subject with a fast and a slow shutter." },
+        { summary: "ISO is another exposure control; compare image brightness and noise at different settings.", practice: "Make two indoor photos at different ISO settings and compare them." },
+      ],
+      "some experience": [
+        { summary: "Exposure settings trade off: changing one setting can require adjusting another to maintain similar brightness.", practice: "Change aperture by one stop and compensate with shutter time." },
+        { summary: "A wider aperture can reduce depth of field; the result also depends on focus distance and framing.", practice: "Make a portrait with a distinct background, then compare focus depth." },
+        { summary: "Shutter speed controls motion rendering as well as exposure; subject speed and camera movement both matter.", practice: "Compare a stabilized long exposure with a handheld one." },
+        { summary: "Higher ISO can help in low light but may reduce image quality depending on the camera and conditions.", practice: "Compare files at matched brightness rather than judging ISO numbers alone." },
+      ],
+      "advanced learner": [
+        { summary: "Exposure choices are constrained optimization: preserve highlights, motion intent, depth of field, and acceptable noise.", practice: "For a moving subject in low light, state which constraints you prioritize and why." },
+        { summary: "Equivalent exposure changes brightness while altering motion rendering or depth of field; equivalence is not aesthetic equivalence.", practice: "Create two equivalent exposures with visibly different motion or focus." },
+        { summary: "Meter readings estimate exposure for a scene; evaluate them against subject reflectance and highlight clipping.", practice: "Compare a meter-based exposure with a histogram-guided adjustment." },
+        { summary: "A histogram summarizes tonal distribution but does not encode subject intent or guarantee correct exposure.", practice: "Explain why two different scenes can produce similar histograms." },
+      ],
+    },
+    resources: [
+      { type: "Tutorial", title: "Camera Exposure", attribution: "Cambridge in Colour · photography education", url: "https://www.cambridgeincolour.com/tutorials/camera-exposure.htm" },
+      { type: "Book", title: "Master Your Digital Camera", attribution: "Cambridge in Colour · photography guide", url: "https://www.cambridgeincolour.com/books/understanding-photography-v2/" },
+      { type: "Book", title: "The Camera", attribution: "Ansel Adams · photographic technique", url: "https://books.google.com/books?vid=ISBN9780821221846" },
+    ],
+  },
+  "Special relativity": {
+    levels: {
+      "curious beginner": [
+        { summary: "Special relativity starts from two ideas: physical laws are the same in inertial frames, and vacuum light speed is invariant.", practice: "Explain why the second idea changes everyday assumptions about time." },
+        { summary: "Events that are simultaneous in one inertial frame need not be simultaneous in another.", practice: "Use a moving-train thought experiment to compare two observers." },
+        { summary: "Time dilation compares elapsed time along different paths through spacetime; it is not a clock malfunction.", practice: "Describe which observer measures each clock and in which frame." },
+        { summary: "Mass-energy equivalence follows within the theory; E = mc² relates rest energy to invariant mass.", practice: "Explain what the equation does and does not say about an object's total energy." },
+      ],
+      "some experience": [
+        { summary: "Lorentz transformations preserve the spacetime interval between events while mixing space and time coordinates.", practice: "Apply a one-dimensional Lorentz transformation to two events." },
+        { summary: "Relativity of simultaneity follows from Lorentz transformations, not merely signal travel-time delays.", practice: "Distinguish a coordinate transformation from an observer's delayed observation." },
+        { summary: "Proper time is invariant along a worldline; coordinate time depends on the chosen inertial frame.", practice: "Compare proper time for inertial paths between two events." },
+        { summary: "The energy-momentum relation E² = (pc)² + (mc²)² includes rest energy as the p = 0 case.", practice: "Recover E = mc² by setting momentum to zero." },
+      ],
+      "advanced learner": [
+        { summary: "The Minkowski interval is invariant under Lorentz transformations; causal structure follows from the light cone.", practice: "Classify event separations as timelike, spacelike, or null." },
+        { summary: "Einstein's 1905 paper is a primary historical source; modern treatments formalize its kinematics with spacetime geometry.", practice: "Compare the paper's operational arguments with a four-vector derivation." },
+        { summary: "For a clock following a timelike worldline, proper time is obtained by integrating the spacetime line element.", practice: "Derive proper time for inertial motion at constant velocity." },
+        { summary: "Four-momentum conservation gives the invariant relation between energy, momentum, and rest mass.", practice: "Use four-momentum invariants to analyze a simple decay or collision." },
+      ],
+    },
+    resources: [
+      { type: "Primary paper", title: "On the Electrodynamics of Moving Bodies (1905)", attribution: "Albert Einstein · Annalen der Physik", url: "https://doi.org/10.1002/andp.19053221004" },
+      { type: "Video course", title: "Introduction to Special Relativity", attribution: "Markus Klute · MIT OpenCourseWare", url: "https://ocw.mit.edu/courses/8-20-introduction-to-special-relativity-january-iap-2021/" },
+    ],
+  },
+  "Affective computing": {
+    levels: {
+      "curious beginner": [
+        { summary: "Affective computing studies systems that can recognize, interpret, or respond to aspects of human emotion.", practice: "List what a computer can observe and what it cannot know directly about a person's feelings." },
+        { summary: "Signals such as words or facial movement are imperfect clues, not direct measurements of a private emotional state.", practice: "Think of two different feelings that could produce the same outward signal." },
+        { summary: "Rosalind Picard's work helped establish affective computing as a research area.", practice: "Read the MIT Media Lab group's description and identify its current research questions." },
+        { summary: "Emotion-aware technology raises questions about consent, privacy, bias, and whether an inference should be acted on.", practice: "Name one benefit and one risk of emotion inference in an app." },
+      ],
+      "some experience": [
+        { summary: "Affective-computing systems map observable features to affect-related labels or responses; labels depend on operational definitions.", practice: "Compare categorical labels with dimensional representations such as valence and arousal." },
+        { summary: "Models may fail across people and contexts because expression, culture, disability, and situation affect signals.", practice: "Design an evaluation that tests performance across contexts and groups." },
+        { summary: "Picard's foundational book framed the field; contemporary work spans sensing, interaction, health, and human-centered AI.", practice: "Compare the book's framing with the MIT group's current research overview." },
+        { summary: "A classifier score is not a validated diagnosis or certain account of an individual's internal state.", practice: "Draft interface language that reports uncertainty and gives users control." },
+      ],
+      "advanced learner": [
+        { summary: "Affective labels are construct-dependent; evaluate construct validity, annotation agreement, and ecological validity.", practice: "Specify a construct and justify how your proposed measurements operationalize it." },
+        { summary: "Consider distribution shift, group calibration, missingness, and confounding before interpreting model performance.", practice: "Propose a preregistered evaluation with subgroup and out-of-domain tests." },
+        { summary: "Picard's foundational work should be read alongside current empirical studies and critiques of emotion inference.", practice: "Separate historical framing, empirical evidence, and normative assumptions in a paper." },
+        { summary: "Deployment requires necessity, consent, data minimization, contestability, and a clear account of downstream harms.", practice: "Threat-model an emotion-aware feature before deciding whether it should exist." },
+      ],
+    },
+    resources: [
+      { type: "Book", title: "Affective Computing", attribution: "Rosalind W. Picard · MIT Press", url: "https://books.google.com/books?id=GaVncRTcb1gC" },
+      { type: "Research group", title: "Affective Computing", attribution: "MIT Media Lab", url: "https://www.media.mit.edu/groups/affective-computing/overview/" },
+    ],
+  },
+};
 const STARTER_PATHS = [
   {
     topic: "Algebra: linear equations",
@@ -28,54 +161,6 @@ const STARTER_PATHS = [
     description: "Find the missing value, one balanced step at a time.",
     icon: "∑",
     color: "green",
-    references: [
-      {
-        title: "Elementary Algebra 2e",
-        attribution: "Jay Abramson · OpenStax",
-        kind: "Open textbook",
-        url: "https://openstax.org/details/books/elementary-algebra-2e",
-      },
-    ],
-    lesson: {
-      pages: [
-        {
-          lede: "A linear equation is a statement that two expressions are equal. Learning to solve one is really learning how to keep a balance while finding an unknown.",
-          sections: [
-            { heading: "Think of a balance", text: "Imagine both sides of an equation on a set of scales. If you add, remove, multiply, or divide something on one side, you must do the same to the other. The balance stays level, and the equality stays true." },
-            { heading: "A worked example", text: "Solve 2x + 3 = 11. First, subtract 3 from both sides: 2x = 8. Then divide both sides by 2: x = 4. Check your answer in the original equation: 2 × 4 + 3 = 11. It works." },
-            { heading: "Try it yourself", text: "Solve 3x + 2 = 14. Ask yourself: what should you undo first? After you find x, substitute your answer into the original equation to check it." },
-          ],
-          callout: "The key idea: whatever you do to one side of an equation, do to the other side too.",
-        },
-        {
-          lede: "Use inverse operations to undo the operations around an unknown. Undo them in reverse order, while keeping both sides of the equation balanced.",
-          sections: [
-            { heading: "Undo in reverse", text: "In 4x − 5 = 19, the unknown is multiplied by 4 and then 5 is subtracted. Undo subtraction first by adding 5 to both sides. Then undo multiplication by dividing both sides by 4." },
-            { heading: "Work through it", text: "Adding 5 gives 4x = 24. Dividing by 4 gives x = 6. Check: 4 × 6 − 5 = 19. Each inverse operation moves you one step closer to the unknown." },
-            { heading: "Try it yourself", text: "Solve 6x − 7 = 29. Which operation should you undo first? Write each balanced step before you calculate the answer." },
-          ],
-          callout: "Inverse pairs include addition/subtraction and multiplication/division. Apply the inverse to both sides.",
-        },
-        {
-          lede: "Equations can describe relationships in everyday situations. Translating a situation into an equation helps you see what is known and what you need to find.",
-          sections: [
-            { heading: "Turn a situation into an equation", text: "Suppose four identical notebooks and a 3-dollar delivery fee cost 19 dollars altogether. If p is the price of one notebook, the total is 4p + 3 = 19." },
-            { heading: "Solve and interpret", text: "Subtract the 3-dollar fee: 4p = 16. Divide by 4 notebooks: p = 4 dollars per notebook. The value makes sense in context, and checking 4 × 4 + 3 gives the original 19 dollars." },
-            { heading: "Try it yourself", text: "A ride costs a 2-dollar starting fee plus 3 dollars per mile. If the total is 20 dollars, let m be the number of miles and write an equation to find m." },
-          ],
-          callout: "Name the unknown first, then translate the relationships in the story into operations.",
-        },
-        {
-          lede: "Bring the steps together: identify what is happening to the unknown, undo those operations in reverse order, and check your result in the original equation.",
-          sections: [
-            { heading: "Your practice problem", text: "Solve 5x + 2 = 27. Show the operation you apply to both sides at each step, then substitute your answer back into the starting equation." },
-            { heading: "Check your understanding", text: "In your own words, explain why an operation must be applied to both sides. Then try changing the 27 to another number and solve the new equation." },
-            { heading: "Reflect", text: "Which step feels most natural now? Which part would you like to practice again: choosing the inverse operation, keeping both sides balanced, or checking your answer?" },
-          ],
-          callout: "For 5x + 2 = 27, subtract 2 to get 5x = 25, then divide by 5: x = 5. Check: 5 × 5 + 2 = 27.",
-        },
-      ],
-    },
   },
   {
     topic: "The science of sleep",
@@ -85,20 +170,6 @@ const STARTER_PATHS = [
     description: "Explore what happens in the brain and body as you sleep.",
     icon: "☾",
     color: "blue",
-    references: [
-      {
-        title: "Overnight therapy? The role of sleep in emotional brain processing",
-        attribution: "Matthew P. Walker & Els van der Helm · Psychological Bulletin (2009)",
-        kind: "Peer-reviewed review",
-        url: "https://doi.org/10.1037/a0016570",
-      },
-      {
-        title: "Why Is Sleep Important?",
-        attribution: "National Heart, Lung, and Blood Institute",
-        kind: "Government health resource",
-        url: "https://www.nhlbi.nih.gov/health/sleep/why-sleep-important",
-      },
-    ],
   },
   {
     topic: "Photography basics",
@@ -108,14 +179,6 @@ const STARTER_PATHS = [
     description: "Learn to shape light, composition, and focus into a picture.",
     icon: "◉",
     color: "gold",
-    references: [
-      {
-        title: "Camera Exposure",
-        attribution: "Cambridge in Colour · Photography tutorial",
-        kind: "Educational reference",
-        url: "https://www.cambridgeincolour.com/tutorials/camera-exposure.htm",
-      },
-    ],
   },
 ];
 
@@ -232,6 +295,7 @@ function renderTopicCatalog() {
 
   matchingTopics.forEach(({ topic, category }) => {
     const existing = state.topics.find((item) => item.topic.toLocaleLowerCase() === topic.toLocaleLowerCase());
+    const hasCuratedLesson = Boolean(CURATED_LESSONS[topic]);
     const button = document.createElement("button");
     button.className = "catalog-topic";
     button.type = "button";
@@ -244,7 +308,7 @@ function renderTopicCatalog() {
     topicLabel.textContent = topic;
     const action = document.createElement("span");
     action.className = "catalog-topic-action";
-    action.textContent = existing ? "Open path →" : "Start path →";
+    action.textContent = existing ? "Open path →" : hasCuratedLesson ? "Curated lesson →" : "Study prompt →";
     button.append(categoryLabel, topicLabel, action);
     catalog.append(button);
   });
@@ -260,16 +324,30 @@ function showView(view) {
 }
 
 function buildLessonContent(topic, index) {
-  const references = topic.references?.length
+  const curated = CURATED_LESSONS[topic.topic];
+  const levelContent = curated?.levels[topic.level]?.[index];
+  const resources = curated?.resources || topic.references?.map((reference) => ({
+    type: reference.kind,
+    title: reference.title,
+    attribution: reference.attribution,
+    url: reference.url,
+  }));
+  const references = resources?.length
     ? `<section class="lesson-references" aria-labelledby="references-heading">
-        <h2 id="references-heading">Starting references</h2>
-        <p>Use these sources to check and explore this topic. They are starting points, not proof that every lesson statement has been independently verified.</p>
-        <ul>${topic.references.map((reference) => `<li><a href="${escapeHtml(reference.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(reference.title)}</a><span>${escapeHtml(reference.attribution)} · ${escapeHtml(reference.kind)}</span></li>`).join("")}</ul>
+        <h2 id="references-heading">Further learning</h2>
+        <p>Short starting points from researchers, educators, and academic institutions. Check the original source for context.</p>
+        <ul>${resources.map((resource) => `<li><span class="reference-type">${escapeHtml(resource.type)}</span><a href="${escapeHtml(resource.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(resource.title)}</a><span>${escapeHtml(resource.attribution)}</span></li>`).join("")}</ul>
       </section>`
     : `<section class="lesson-references" aria-labelledby="references-heading">
         <h2 id="references-heading">References not researched yet</h2>
         <p>This prototype does not search or verify sources for custom topics. The material above is a study prompt, not researched instruction; check reliable, topic-specific references before relying on it.</p>
       </section>`;
+  if (curated && levelContent) {
+    return `<h2>${escapeHtml(lessonLabel(index))}</h2>
+      <p>${escapeHtml(levelContent.summary)}</p>
+      <p class="lesson-callout">${escapeHtml(levelContent.practice)}</p>
+      ${references}`;
+  }
   if (topic.lesson) {
     const { sections, callout } = topic.lesson.pages?.[index] || topic.lesson;
     return `${sections.map((section) => `<h2>${escapeHtml(section.heading)}</h2><p>${escapeHtml(section.text)}</p>`).join("")}<p class="lesson-callout">${escapeHtml(callout)}</p>${references}`;
@@ -285,6 +363,10 @@ function buildLessonContent(topic, index) {
     ${references}`;
 }
 
+function lessonLabel(index) {
+  return ["Core idea", "Build the model", "Apply it", "Think critically"][index] || "Explore further";
+}
+
 function openTopic(id) {
   const topic = topicById(id);
   if (!topic) return;
@@ -298,10 +380,15 @@ function renderLesson() {
   const topic = topicById(activeTopicId);
   if (!topic) return;
   const lesson = LESSONS[activeLessonIndex];
+  const curated = CURATED_LESSONS[topic.topic];
+  const levelContent = curated?.levels[topic.level]?.[activeLessonIndex];
   const lessonContent = topic.lesson?.pages?.[activeLessonIndex];
   $("#lesson-title").textContent = topic.lesson && activeLessonIndex === 0 ? topic.topic : lesson.title;
-  $("#lesson-lede").textContent = lessonContent?.lede || topic.lesson?.lede || lesson.description;
-  $("#lesson-level").textContent = `${topic.level} · YOUR LEARNING PATH`;
+  $("#lesson-lede").textContent = levelContent
+    ? "Short, level-adjusted lesson. Use the references below to explore the evidence in more depth."
+    : lessonContent?.lede || topic.lesson?.lede || lesson.description;
+  $("#lesson-level").textContent = "YOUR LEARNING PATH";
+  $("#lesson-level-select").value = topic.level;
   $("#lesson-duration").textContent = `◷  ${lesson.time}`;
   $("#lesson-step").textContent = `STEP ${activeLessonIndex + 1} OF ${LESSONS.length}`;
   $("#lesson-body").innerHTML = buildLessonContent(topic, activeLessonIndex);
@@ -416,6 +503,13 @@ document.addEventListener("click", (event) => {
 
 $("#catalog-search").addEventListener("input", renderTopicCatalog);
 $("#catalog-category").addEventListener("change", renderTopicCatalog);
+$("#lesson-level-select").addEventListener("change", (event) => {
+  const topic = topicById(activeTopicId);
+  if (!topic) return;
+  topic.level = event.target.value;
+  saveState();
+  renderLesson();
+});
 $("#complete-lesson").addEventListener("click", handleCompleteLesson);
 $("#back-to-home").addEventListener("click", () => showView("home"));
 $(".help-button").addEventListener("click", () => {

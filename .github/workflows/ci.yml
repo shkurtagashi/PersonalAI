@@ -2,12 +2,16 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [dev, main, "feature/**", "fix/**", "chore/**"]
   pull_request:
-    branches: [main]
+    branches: [dev, main]
 
 permissions:
   contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate:
@@ -16,6 +20,16 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
+      - name: Require dev as the release source for main
+        if: github.event_name == 'pull_request' && github.base_ref == 'main'
+        env:
+          SOURCE_BRANCH: ${{ github.head_ref }}
+        run: |
+          if [ "$SOURCE_BRANCH" != "dev" ]; then
+            echo "Release pull requests to main must come from dev."
+            exit 1
+          fi
 
       - name: Set up Node.js
         uses: actions/setup-node@v4

@@ -74,7 +74,7 @@
               <span class="create-icon" aria-hidden="true">✦</span>
               <div>
                 <h2 id="create-heading">What would you like to learn?</h2>
-                <p>Pick a topic and get a bite-sized framework to guide your learning.</p>
+                <p>Pick any topic to start a study path. Explore the catalog for ideas.</p>
               </div>
             </div>
             <form id="topic-form" class="topic-form">
@@ -96,6 +96,7 @@
               <button type="button" class="suggestion-chip" data-topic="Photography basics">Photography basics</button>
               <button type="button" class="suggestion-chip" data-topic="How money works">How money works</button>
             </div>
+            <button class="text-button explore-button" type="button" data-view="topics">Explore 90+ topic ideas <span aria-hidden="true">→</span></button>
           </section>
 
           <section class="continue-section" aria-labelledby="continue-heading">
@@ -131,9 +132,30 @@
         <section class="view-panel hidden" id="topics-view">
           <div class="page-intro">
             <p class="eyebrow"><span class="eyebrow-dot"></span> YOUR PERSONAL CURRICULUM</p>
-            <h1>Every topic starts<br><span>with a question.</span></h1>
-            <p class="welcome-subtitle">Your learning paths, gathered in one place.</p>
+            <h1>Explore what<br><span>you could learn.</span></h1>
+            <p class="welcome-subtitle">Browse ideas across school subjects, university fields, and everyday skills.</p>
           </div>
+          <section class="catalog-section" aria-labelledby="catalog-heading">
+            <div class="catalog-heading-row">
+              <div><p class="eyebrow">A WORLD OF CURIOSITY</p><h2 id="catalog-heading">Find your next topic</h2></div>
+              <span class="catalog-count" id="catalog-count"></span>
+            </div>
+            <div class="catalog-controls">
+              <label class="sr-only" for="catalog-search">Search topic ideas</label>
+              <span aria-hidden="true">⌕</span>
+              <input id="catalog-search" type="search" placeholder="Search subjects and topics" autocomplete="off">
+              <label class="sr-only" for="catalog-category">Filter by subject area</label>
+              <select id="catalog-category"><option value="all">All areas</option></select>
+            </div>
+            <p class="catalog-note">These are topic ideas, not a claim that every subject has a researched or expert-reviewed lesson. Custom paths currently use general study prompts and do not yet include topic-specific sources.</p>
+            <div class="catalog-grid" id="topic-catalog"></div>
+            <p class="catalog-no-results hidden" id="catalog-no-results">No matching topics. Try another search, or enter your own topic above.</p>
+          </section>
+          <section class="my-paths-section" aria-labelledby="my-paths-heading">
+            <div class="section-heading">
+              <div><p class="eyebrow">YOUR PROGRESS</p><h2 id="my-paths-heading">My learning paths</h2></div>
+            </div>
+          </section>
           <div class="path-grid topics-grid" id="all-paths-grid"></div>
           <div class="empty-state" id="topics-empty-state">
             <div class="empty-illustration" aria-hidden="true"><span>?</span><i></i><b></b></div>

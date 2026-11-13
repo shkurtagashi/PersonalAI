@@ -22,13 +22,14 @@ Publishing is deliberately manual; pushing code does not make the site public. T
 ## What works in this prototype
 
 - Browse a few sample learning paths or create a path for a topic of your choice.
+- Browse and search 96 topic ideas across 12 subject areas, then start a study path from the catalog.
 - Pick a starting level, work through a four-step learning path, and mark lessons complete.
 - See progress, estimated learning time, and streaks update; progress is saved in this browser.
 - Remove a topic and its local progress.
 - Use the layout on desktop and mobile screens.
 - See starting references on built-in sample topics.
 
-The linear-equations sample includes a written lesson. Built-in sample topics include starting references, not verified citations for every lesson statement. Custom topics currently produce a reusable learning framework and prompts; they do **not** produce researched sources, expert-reviewed explanations, or AI-generated subject content. This keeps the prototype honest and usable without an API key. See [BUSINESS_PLAN.md](./BUSINESS_PLAN.md) for the proposed next step: a source-grounded, tutor-led product.
+The linear-equations sample includes a written lesson. Built-in sample topics include starting references, not verified citations for every lesson statement. Catalog topics help learners choose what to study; they currently produce the same reusable learning framework and prompts as other custom topics and do **not** automatically provide researched sources, expert-reviewed explanations, or AI-generated subject content. This keeps the prototype honest and usable without an API key. See [BUSINESS_PLAN.md](./BUSINESS_PLAN.md) for the proposed next step: a source-grounded, tutor-led product.
 
 ## Project files
 

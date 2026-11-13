@@ -147,7 +147,7 @@
               <label class="sr-only" for="catalog-category">Filter by subject area</label>
               <select id="catalog-category"><option value="all">All areas</option></select>
             </div>
-            <p class="catalog-note">These are topic ideas, not a claim that every subject has a researched or expert-reviewed lesson. Custom paths currently use general study prompts and do not yet include topic-specific sources.</p>
+            <p class="catalog-note">A few topics have short, level-adjusted lessons with cited starting references. Other entries are ideas only: starting a path does not create researched or expert-reviewed content.</p>
             <div class="catalog-grid" id="topic-catalog"></div>
             <p class="catalog-no-results hidden" id="catalog-no-results">No matching topics. Try another search, or enter your own topic above.</p>
           </section>
@@ -172,7 +172,16 @@
               <p class="eyebrow"><span class="eyebrow-dot"></span> <span id="lesson-level">YOUR LEARNING PATH</span></p>
               <h1 id="lesson-title"></h1>
               <p class="lesson-lede" id="lesson-lede"></p>
-              <div class="lesson-meta"><span id="lesson-duration">◷ &nbsp;10 min</span><span>·</span><span id="lesson-step">STEP 1 OF 4</span></div>
+              <div class="lesson-meta">
+                <span id="lesson-duration">◷ &nbsp;10 min</span><span>·</span><span id="lesson-step">STEP 1 OF 4</span>
+                <label class="lesson-level-picker" for="lesson-level-select">LEVEL
+                  <select id="lesson-level-select">
+                    <option value="curious beginner">Beginner</option>
+                    <option value="some experience">Intermediate</option>
+                    <option value="advanced learner">Advanced</option>
+                  </select>
+                </label>
+              </div>
               <div class="lesson-body" id="lesson-body"></div>
               <div class="lesson-actions">
                 <button class="button button-primary" id="complete-lesson" type="button">Mark lesson complete <span aria-hidden="true">✓</span></button>

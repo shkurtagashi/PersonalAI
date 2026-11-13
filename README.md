@@ -12,14 +12,14 @@ The GitHub Actions workflow in `.github/workflows/ci.yml` checks JavaScript synt
 
 ### One-time GitHub branch protection
 
-GitHub Actions YAML cannot prevent direct pushes to a branch. In the GitHub repository settings, create rulesets (or branch protection rules) for both `main` and `dev`:
+GitHub Actions YAML cannot prevent direct pushes to a branch. GitHub reports that rulesets and classic branch-protection rules are not enforced for this private repository on its current plan; enforcement requires moving the repository to a GitHub Team or Enterprise organization account. Until then, treat the workflow checks as advisory: review changes and confirm checks pass before merging, and do not merge a release PR unless its source is `dev`. A failing workflow check does not itself block a merge.
+
+After upgrading, a repository administrator should create rulesets (or branch protection rules) for both `main` and `dev`:
 
 1. Require changes through pull requests; disallow force pushes and branch deletion.
 2. Require the **Validate static app** status check before merging to both branches.
 3. Require at least one independent approval before merging to `main`.
 4. Apply the rules to administrators as well, if supported and desired.
-
-These settings must be enabled by a repository administrator; they are not configured automatically by this codebase. The CI workflow enforces `dev` as the source for pull requests to `main`, but GitHub branch protection must still block direct pushes.
 
 ### GitHub Pages
 

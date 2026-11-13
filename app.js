@@ -5,6 +5,20 @@ const LESSONS = [
   { title: "See it in action", time: "10 min", description: "Work through a concrete example and notice how the core ideas show up in the real world." },
   { title: "Practice & reflect", time: "8 min", description: "Try a short challenge, explain what you have learned, and choose your next step." },
 ];
+const TOPIC_CATALOG = [
+  { category: "Foundations", topics: ["Reading comprehension", "Writing clear paragraphs", "Grammar and punctuation", "Fractions and decimals", "Ratios and percentages", "Basic geometry", "Study skills", "Research and source evaluation"] },
+  { category: "Mathematics", topics: ["Algebra: linear equations", "Quadratic equations", "Functions and graphs", "Trigonometry", "Geometry and proofs", "Probability", "Statistics and data", "Calculus: derivatives"] },
+  { category: "Biology & health", topics: ["Cell biology", "Genetics and inheritance", "Evolution and natural selection", "Human anatomy", "The science of sleep", "Nutrition basics", "Ecology and ecosystems", "Neuroscience foundations"] },
+  { category: "Physics & chemistry", topics: ["Classical mechanics", "Electricity and magnetism", "Waves and sound", "Special relativity", "Quantum mechanics foundations", "Atoms and the periodic table", "Chemical reactions", "Organic chemistry basics"] },
+  { category: "Earth & space", topics: ["Weather and climate", "Climate change science", "Rocks and plate tectonics", "The solar system", "Stars and galaxies", "Ocean science", "Environmental science", "Sustainability fundamentals"] },
+  { category: "Computing & engineering", topics: ["Computer science fundamentals", "Programming with Python", "Web development basics", "Algorithms and data structures", "Artificial intelligence basics", "Data literacy", "Cybersecurity fundamentals", "Robotics and control systems"] },
+  { category: "Society & behavior", topics: ["Psychology fundamentals", "Affective computing", "Cognitive science", "Sociology", "Economics fundamentals", "Political science", "Media literacy", "Ethics and moral philosophy"] },
+  { category: "History & civics", topics: ["Ancient civilizations", "World history", "Modern European history", "History of science", "How governments work", "Democracy and citizenship", "International relations", "Human rights"] },
+  { category: "Languages & literature", topics: ["English literature", "Poetry and close reading", "Creative writing", "Public speaking", "Spanish for beginners", "French for beginners", "Linguistics basics", "Mythology and storytelling"] },
+  { category: "Business & money", topics: ["How money works", "Personal budgeting", "Compound interest", "Business fundamentals", "Marketing basics", "Entrepreneurship", "Accounting foundations", "Project management"] },
+  { category: "Arts & design", topics: ["Photography basics", "Drawing fundamentals", "Color theory", "Graphic design principles", "Music theory", "Film language", "Architecture foundations", "Art history"] },
+  { category: "Everyday skills", topics: ["Cooking fundamentals", "Gardening basics", "Critical thinking", "Decision-making", "Time management", "Communication skills", "First aid basics", "Learning how to learn"] },
+];
 const STARTER_PATHS = [
   {
     topic: "Algebra: linear equations",
@@ -190,6 +204,50 @@ function renderPaths() {
   $("#lessons-value").textContent = String(state.topics.reduce((total, topic) => total + (topic.completed?.length || 0), 0));
   $("#streak-value").textContent = `${state.streak} ${state.streak === 1 ? "day" : "days"}`;
   renderTopicNav();
+  renderTopicCatalog();
+}
+
+function renderTopicCatalog() {
+  const categorySelect = $("#catalog-category");
+  if (!categorySelect.dataset.initialized) {
+    TOPIC_CATALOG.forEach(({ category }) => {
+      const option = document.createElement("option");
+      option.value = category;
+      option.textContent = category;
+      categorySelect.append(option);
+    });
+    categorySelect.dataset.initialized = "true";
+  }
+
+  const query = $("#catalog-search").value.trim().toLocaleLowerCase();
+  const categoryFilter = categorySelect.value;
+  const matchingTopics = TOPIC_CATALOG.flatMap(({ category, topics }) => topics
+    .filter((topic) => (categoryFilter === "all" || category === categoryFilter) && topic.toLocaleLowerCase().includes(query))
+    .map((topic) => ({ topic, category })));
+
+  $("#catalog-count").textContent = `${matchingTopics.length} ${matchingTopics.length === 1 ? "topic" : "topics"}`;
+  $("#catalog-no-results").classList.toggle("hidden", matchingTopics.length > 0);
+  const catalog = $("#topic-catalog");
+  catalog.replaceChildren();
+
+  matchingTopics.forEach(({ topic, category }) => {
+    const existing = state.topics.find((item) => item.topic.toLocaleLowerCase() === topic.toLocaleLowerCase());
+    const button = document.createElement("button");
+    button.className = "catalog-topic";
+    button.type = "button";
+    button.dataset.catalogTopic = topic;
+    const categoryLabel = document.createElement("span");
+    categoryLabel.className = "catalog-topic-category";
+    categoryLabel.textContent = category;
+    const topicLabel = document.createElement("span");
+    topicLabel.className = "catalog-topic-name";
+    topicLabel.textContent = topic;
+    const action = document.createElement("span");
+    action.className = "catalog-topic-action";
+    action.textContent = existing ? "Open path →" : "Start path →";
+    button.append(categoryLabel, topicLabel, action);
+    catalog.append(button);
+  });
 }
 
 function showView(view) {
@@ -348,8 +406,16 @@ document.addEventListener("click", (event) => {
     $("#topic-input").value = suggestion.dataset.topic;
     $("#topic-input").focus();
   }
+  const catalogTopic = event.target.closest("[data-catalog-topic]");
+  if (catalogTopic) {
+    const topic = state.topics.find((item) => item.topic.toLocaleLowerCase() === catalogTopic.dataset.catalogTopic.toLocaleLowerCase());
+    if (topic) openTopic(topic.id);
+    else createTopic(catalogTopic.dataset.catalogTopic, $("#level-select").value);
+  }
 });
 
+$("#catalog-search").addEventListener("input", renderTopicCatalog);
+$("#catalog-category").addEventListener("change", renderTopicCatalog);
 $("#complete-lesson").addEventListener("click", handleCompleteLesson);
 $("#back-to-home").addEventListener("click", () => showView("home"));
 $(".help-button").addEventListener("click", () => {
